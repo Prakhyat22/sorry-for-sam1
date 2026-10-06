@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For Sam ❤️</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", "Segoe UI", sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+      color: white;
+      background:
+        radial-gradient(circle at 20% 20%, #8b3dff55, transparent 35%),
+        radial-gradient(circle at 80% 80%, #ff4f9a55, transparent 35%),
+        linear-gradient(135deg, #12001f, #270033, #16001f);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    /* Ambient glow */
+    body::before {
+      content: "";
+      position: fixed;
+      width: 500px;
+      height: 500px;
+      background: #ff3f9f;
+      filter: blur(180px);
+      opacity: 0.12;
+      top: -150px;
+      left: -150px;
+      pointer-events: none;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      width: 500px;
+      height: 500px;
+      background: #7b2cff;
+      filter: blur(180px);
+      opacity: 0.12;
+      bottom: -180px;
+      right: -150px;
+      pointer-events: none;
+    }
+
+    .container {
+      width: min(92%, 720px);
+      text-align: center;
+      padding: 50px 30px;
+      margin: 30px 0;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 30px;
+      background: rgba(255,255,255,0.07);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.35);
+      position: relative;
+      z-index: 2;
+      animation: appear 1.2s ease;
+    }
+
+    @keyframes appear {
+      from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.97);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .heart {
+      font-size: 70px;
+      animation: heartbeat 1.5s infinite;
+      margin-bottom: 10px;
+    }
+
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      15% { transform: scale(1.18); }
+      30% { transform: scale(1); }
+      45% { transform: scale(1.12); }
+    }
+
+    .small {
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      font-size: 12px;
+      opacity: 0.7;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: clamp(42px, 8vw, 72px);
+      line-height: 1;
+      margin-bottom: 20px;
+      background: linear-gradient(90deg, #fff, #ffb7db, #d8b4ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subtitle {
+      font-size: 19px;
+      line-height: 1.7;
+      color: #f3ddeb;
+      max-width: 580px;
+      margin: auto;
+    }
+
+    .divider {
+      width: 80px;
+      height: 2px;
+      margin: 30px auto;
+      background: linear-gradient(90deg, transparent, #ff7fbc, transparent);
+    }
+
+    .message {
+      text-align: left;
+      font-size: 17px;
+      line-height: 1.9;
+      color: #f7eaf4;
+      margin-top: 10px;
+    }
+
+    .message p {
+      margin-bottom: 18px;
+    }
+
+    .highlight {
+      color: #ffafd5;
+      font-weight: 600;
+    }
+
+    .button {
+      border: none;
+      outline: none;
+      margin-top: 25px;
+      padding: 16px 30px;
+      border-radius: 50px;
+      color: white;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      background: linear-gradient(135deg, #ff4f9a, #9b4dff);
+      box-shadow: 0 10px 30px rgba(255, 79, 154, 0.3);
+      transition: 0.3s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 15px 40px rgba(255, 79, 154, 0.45);
+    }
+
+    .hidden-message {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: all 0.8s ease;
+    }
+
+    .hidden-message.show {
+      max-height: 500px;
+      opacity: 1;
+      margin-top: 30px;
+    }
+
+    .final {
+      padding: 25px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .final h2 {
+      font-size: 30px;
+      margin-bottom: 12px;
+    }
+
+    .final p {
+      line-height: 1.8;
+      color: #f6dce9;
+    }
+
+    .signature {
+      margin-top: 20px;
+      font-size: 20px;
+      font-style: italic;
+      color: #ffb7d9;
+    }
+
+    /* Floating hearts */
+    .floating-heart {
+      position: fixed;
+      bottom: -30px;
+      font-size: 20px;
+      opacity: 0.6;
+      animation: floatUp linear forwards;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    @keyframes floatUp {
+      from {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+      }
+
+      15% {
+        opacity: 0.7;
+      }
+
+      to {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 40px 22px;
+      }
+
+      .message {
+        font-size: 16px;
+      }
+
+      .heart {
+        font-size: 60px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="heart">❤️</div>
+
+    <div class="small">A little something for</div>
+
+    <h1>Sam</h1>
+
+    <p class="subtitle">
+      I know you're mad at me... and honestly, I understand why.
+      So I made this instead of just saying "sorry" again.
+    </p>
+
+    <div class="divider"></div>
+
+    <div class="message">
+
+      <p>
+        Sam, I'm really sorry.
+      </p>
+
+      <p>
+        I know I didn't reply to your messages, and I know that probably
+        made you feel ignored or like you weren't important to me.
+        <span class="highlight">That was never what I wanted.</span>
+      </p>
+
+      <p>
+        I should have replied. Even if I was busy, distracted, or caught up
+        with something, you deserved a message from me. I could have taken
+        a few seconds to tell you that.
+      </p>
+
+      <p>
+        I don't want you sitting there wondering whether I care,
+        because <span class="highlight">I really, really do.</span>
+      </p>
+
+      <p>
+        I'm not going to make excuses. I messed up.
+        And I'm genuinely sorry for making you feel bad.
+      </p>
+
+      <p>
+        I know one website isn't going to magically fix everything...
+        but I hope it at least makes you smile a little.
+      </p>
+
+    </div>
+
+    <button class="button" onclick="showMessage()">
+      One more thing... 🥺
+    </button>
+
+    <div class="hidden-message" id="finalMessage">
+
+      <div class="final">
+
+        <h2>Please forgive me 🥺❤️</h2>
+
+        <p>
+          I promise I'll try to be better at communicating with you.
+          You shouldn't have to wonder if I'm ignoring you.
+          You mean way too much to me for me to let something this silly
+          come between us.
+        </p>
+
+        <p style="margin-top: 15px;">
+          So... can I have my Sam back? 🥺
+        </p>
+
+        <div class="signature">
+          I'm sorry ❤️
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+
+    function showMessage() {
+      const message = document.getElementById("finalMessage");
+      const button = document.querySelector(".button");
+
+      message.classList.add("show");
+
+      button.innerHTML = "I really mean it ❤️";
+
+      createHeartBurst();
+    }
+
+    function createHeart() {
+      const heart = document.createElement("div");
+
+      heart.className = "floating-heart";
+
+      const hearts = ["❤️", "💗", "💕", "💖", "💜", "✨"];
+      heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = (14 + Math.random() * 20) + "px";
+      heart.style.animationDuration = (5 + Math.random() * 6) + "s";
+
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 11000);
+    }
+
+    function createHeartBurst() {
+      for (let i = 0; i < 20; i++) {
+        setTimeout(createHeart, i * 80);
+      }
+    }
+
+    setInterval(createHeart, 900);
+
+  </script>
+
+</body>
+</html>
